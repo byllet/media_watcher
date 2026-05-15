@@ -15,7 +15,7 @@
 ### Сборка
 
 ```bash
-git clone <URL_репозитория>
+git clone https://github.com/byllet/media_watcher.git
 cd media_watcher
 mkdir build && cd build
 cmake ..
