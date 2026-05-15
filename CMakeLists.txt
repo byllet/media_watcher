@@ -13,7 +13,6 @@ FetchContent_Declare(
     GIT_TAG v3.11.3
     GIT_SHALLOW TRUE
 )
-
 FetchContent_MakeAvailable(json)
 
 FetchContent_Declare(
@@ -24,19 +23,24 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(yaml-cpp)
 
+set(FETCHCONTENT_UPDATES_DISCONNECTED ON)
 FetchContent_Declare(
     bshoshany_thread_pool
     GIT_REPOSITORY https://github.com/bshoshany/thread-pool.git
     GIT_TAG v5.1.0
     GIT_SHALLOW TRUE
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+    EXCLUDE_FROM_ALL
+    SYSTEM
 )
+FetchContent_MakeAvailable(bshoshany_thread_pool)
 
 FetchContent_Declare(
   httplib
   GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
   GIT_TAG v0.18.3
+  GIT_SHALLOW TRUE
 )
-
 FetchContent_MakeAvailable(httplib)
 
 FetchContent_MakeAvailable(bshoshany_thread_pool)
