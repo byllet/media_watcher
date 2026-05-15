@@ -1,0 +1,14 @@
+Audio:
+    - .mp3
+    - .wav
+
+videO:
+    - .mov
+
+images: 
+    - .jpeg
+    - .png
+    - .jpg
+
+docs:
+    - .pdf
