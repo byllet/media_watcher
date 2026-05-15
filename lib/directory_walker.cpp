@@ -6,7 +6,8 @@ const std::unordered_set<std::string> skip = {"Library"};
 DirectoryWalker::DirectoryWalker(
     const std::string &path,
     const std::unordered_map<std::string, std::string> &extension_category)
-    : m_path{path}, m_extension_category{extension_category} {}
+    : m_path{path}, m_extension_category{extension_category},
+      m_task_counter{0} {}
 
 void DirectoryWalker::AddFile(const fs::path &path) {
   const auto &extension = path.extension().string();

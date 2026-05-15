@@ -14,6 +14,7 @@ public:
       long long interval, bool server, bool file_saving);
 
   void Start();
+  void Stop();
 
 private:
   void Iteraion();
@@ -27,6 +28,7 @@ private:
 
   bool m_run_server;
   bool m_file_saving;
+  bool m_stop = false;
 
 private:
   nlohmann::json m_cached_json;

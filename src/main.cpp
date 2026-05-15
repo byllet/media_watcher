@@ -2,7 +2,9 @@
 #include "yaml-cpp/yaml.h"
 #include <filesystem>
 #include <iostream>
-#include <unordered_map>
+#include <string>
+
+namespace fs = std::filesystem;
 
 std::unordered_map<std::string, std::string> LoadConfig(const fs::path &path) {
   if (!fs::exists(path)) {

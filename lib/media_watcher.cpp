@@ -39,8 +39,10 @@ void MediaWatcher::Start() {
   if (m_run_server)
     m_srv.Start();
 
-  while (1) {
+  while (!m_stop) {
     Iteraion();
     std::this_thread::sleep_for(std::chrono::milliseconds(m_interval));
   }
 }
+
+void MediaWatcher::Stop() { m_stop = true; }

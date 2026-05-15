@@ -13,7 +13,7 @@ add_executable(${PROJECT_NAME}
                 tests.cpp
               )
 
-target_include_directories(${PROJECT_NAME} PRIVATE ../src)
-target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gtest_main)
+target_include_directories(${PROJECT_NAME} PRIVATE ./src)
+target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gtest_main media_watcher_lib)
 include(GoogleTest)
 gtest_discover_tests(${PROJECT_NAME})
