@@ -1,5 +1,6 @@
 #include "media_watcher.hpp"
 #include "yaml-cpp/yaml.h"
+#include <filesystem>
 #include <iostream>
 #include <unordered_map>
 
@@ -44,15 +45,24 @@ int main(int argc, char **argv) {
 
   if (argc >= 5) {
     path = argv[1];
-    interval = std::stoll(argv[2]);
-    server = std::stoi(argv[3]);
-    file_saving = std::stoi(argv[4]);
+    if (!fs::exists(path)) {
+      std::cerr << "File not exists " << path << '\n';
+      return 1;
+    }
+    try {
+      interval = std::stoll(argv[2]);
+      server = std::stoi(argv[3]);
+      file_saving = std::stoi(argv[4]);
+    } catch (const std::exception &e) {
+      std::cerr << "Error parsing arguments: " << e.what() << '\n';
+      return 1;
+    }
   }
 
   std::cout << "\nSettings:\n";
   std::cout << "Path: " << path << '\n';
   std::cout << "Time interval: " << interval << '\n';
-  std::cout << "Saver: " << server << '\n';
+  std::cout << "Enable server: " << server << '\n';
   std::cout << "File saving: " << file_saving << '\n';
   std::cout << "\n\n";
 
@@ -60,7 +70,7 @@ int main(int argc, char **argv) {
   if (extension_category.empty())
     return 1;
 
-  MediaWatcher mw{extension_category, interval, path, server, file_saving};
+  MediaWatcher mw{path, extension_category, interval, server, file_saving};
   mw.Start();
 
   return 0;

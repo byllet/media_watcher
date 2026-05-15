@@ -46,5 +46,5 @@ FetchContent_MakeAvailable(httplib)
 add_library(BS_thread_pool INTERFACE)
 target_include_directories(BS_thread_pool INTERFACE ${bshoshany_thread_pool_SOURCE_DIR}/include)
 
-add_executable(${PROJECT_NAME} src/main.cpp src/media_watcher.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/media_watcher.cpp src/directory_walker.cpp src/server.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json yaml-cpp::yaml-cpp BS_thread_pool httplib)
